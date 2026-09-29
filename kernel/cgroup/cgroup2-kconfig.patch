@@ -1,0 +1,27 @@
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -800,6 +800,24 @@ menuconfig CGROUPS
+ 
+ 	  Say N if unsure.
+ 
++menuconfig CGROUPS_V2
++	bool "Cgroup v2 (Unified Hierarchy) support"
++	depends on CGROUPS
++	default y
++	help
++	  Enables the new unified hierarchy for cgroups (v2). This provides
++	  a single hierarchy for all cgroup controllers, simplifying management
++	  and providing better resource control.
++
++	  The unified hierarchy provides:
++	  - Simplified cgroup interface with single mount point
++	  - Better resource accounting and delegation
++	  - Improved memory, CPU, and IO control
++	  - PSI (Pressure Stall Information) metrics
++
++	  Recommended for systems using container technologies like Docker.
++	  Say Y if unsure.
++
+ if CGROUPS
+ 
+ config PAGE_COUNTER
