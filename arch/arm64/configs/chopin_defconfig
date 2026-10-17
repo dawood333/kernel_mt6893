@@ -547,14 +547,6 @@ CONFIG_DMABUF_HEAPS=y
 CONFIG_DMABUF_HEAPS_SYSTEM=y
 CONFIG_DMABUF_HEAPS_MTK_MM=y
 
-# ReSukiSU (KernelSU). Integrated by the upstream setup script, which injects
-# drivers/kernelsu and the CONFIG_KSU menu entry.
-CONFIG_KSU=y
-CONFIG_KSU_MANUAL_HOOK=y
-CONFIG_KSU_MANUAL_HOOK_AUTO_INPUT_HOOK=y
-CONFIG_KSU_MANUAL_HOOK_AUTO_SETUID_HOOK=y
-CONFIG_KSU_MANUAL_HOOK_AUTO_INITRC_HOOK=y
-
 # cgroup v2.
 #
 # CONFIG_CGROUPS is the gate for everything below: the per-controller cgroup
