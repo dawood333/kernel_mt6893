@@ -96,10 +96,11 @@ int android_rvh_probe_unregister(struct tracepoint *tp, void *probe, void *data)
 
 #else /* !CONFIG_TRACEPOINTS || !CONFIG_ANDROID_VENDOR_HOOKS */
 
-/* suppress trace hooks */
-#define DECLARE_HOOK DECLARE_EVENT_NOP
-#define DECLARE_RESTRICTED_HOOK(name, proto, args, cond)		\
-	DECLARE_EVENT_NOP(name, PARAMS(proto), PARAMS(args))
+/* Keep hook call sites valid when Android vendor hooks are disabled. */
+#define DECLARE_HOOK(name, proto, args) \
+	static inline void trace_##name proto { }
+#define DECLARE_RESTRICTED_HOOK(name, proto, args, cond) \
+	static inline void trace_##name proto { }
 #define DEFINE_HOOK_FN(_name, _reg, _unreg, proto, args)
 #define __RKX_DO_HOOK_CALL(_name, args) do { } while (0)
 
